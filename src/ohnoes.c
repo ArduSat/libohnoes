@@ -133,6 +133,12 @@ void ohnoes_unpause (void) {
     _paused = false;
 }
 
+/**
+ * Registers a health checking function.
+ * @param check the function pointer. If the function returns false ohnoes
+ *              will reset the system.
+ * @return 0 if registered correctly, -1 otherwise.
+ */
 int ohnoes_register_health_check (ohnoes_health_check_fn check) {
     for (int i = 0; i < OHNOES_MAX_HEALTH_CHECKS; i++) {
         if (_health_checks[i] == NULL) {
