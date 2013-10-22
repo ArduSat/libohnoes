@@ -24,8 +24,8 @@ def configure(ctx):
   ctx.load('gcc')
   ctx.find_program(ctx.options.toolchain + 'size', var='SIZE')
 
-  ctx.env.append_unique('INCLUDES', [ 'include' ] + ctx.options.includes.split(','))
-  ctx.env.append_unique('INCLUDES', [ ctx.options.with_freertos ])
+  ctx.env.append_unique('INCLUDES_OHNOES', [ 'include' ] + ctx.options.includes.split(','))
+  ctx.env.append_unique('INCLUDES_OHNOES', [ ctx.options.with_freertos ])
 
   ctx.env.append_unique('CFLAGS', [
           '-Wall', '-Wextra', '-Wno-unused-parameter', '-fshort-enums',
@@ -38,7 +38,7 @@ def build(ctx):
 
   ctx.stlib(source=ctx.path.ant_glob('src/**/*.c'),
             target='libohnoes',
-            includes = ctx.env.INCLUDES,
+            includes = ctx.env.INCLUDES_OHNOES,
             export_includes = [ 'include' ],
             cflags = ctx.env.CFLAGS,
             use = 'include',
