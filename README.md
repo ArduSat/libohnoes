@@ -50,12 +50,6 @@ Stops monitoring. The task still exists and is scheduled to run, just does nothi
 
 Resumes monitoring after a call to pause.
 
-/**
- * Registers a health checking function.
- * @param check the function pointer. If the function returns false ohnoes
- *              will reset the system.
- * @return 0 if registered correctly, -1 otherwise.
- */
 `int ohnoes_register_health_check (ohnoes_health_check_fn check)`
 
 Registers a health check function. The function must take no parameters and return a boolean. `true` means everything
